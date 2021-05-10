@@ -40,7 +40,19 @@ public class UserRegistrationValidation {
         if (email.matches(emailPattern)) {                                                               //check Input and Pattern
             System.out.println("'" + email + "'" + " validation success !");
         } else {
-            System.out.println("'" + email + "'" + " validation success !");
+            System.out.println("'" + email + "'" + " validation unsuccessful !");
+        }
+    }
+
+    public static void validatePhoneNumber() {
+        System.out.println("Enter Enter mobile number: ");
+        String phoneNumber = scan.nextLine();                 //Accept Number
+        String phoneNumberPattern = "^[0-9]{2}[ ]+[0-9]{10}";    //set pattern
+        Pattern pattern = Pattern.compile(phoneNumberPattern);
+        if (phoneNumber.matches(phoneNumberPattern)) {                //Check input and Pattern
+            System.out.println("'" + phoneNumber + "'" + " validation success !");
+        } else {
+            System.out.println("'" + phoneNumber + "'" + " validation unsuccessful !");
         }
     }
 
@@ -49,6 +61,7 @@ public class UserRegistrationValidation {
         validateFirstName();
         validateLastName();
         validateEmail();
+        validatePhoneNumber();
 
     }
 }
