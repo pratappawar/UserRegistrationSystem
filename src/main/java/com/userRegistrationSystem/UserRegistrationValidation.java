@@ -18,30 +18,21 @@ public class UserRegistrationValidation {
             System.out.println("'" + first_name + "'" + " validation unsuccessful ! ");
         }
     }
-
-    public static boolean validateLastName(String name) {
-        String expression = "^[A-Z]{1}[a-z,A-Z]{2,}";
-        if (name.matches(expression)) {
-            System.out.println("'" + name + "'" + " validation success !");
-            return true;
+    public static void validateLastName() {
+        System.out.println("Enter last name ");
+        String last_name = scan.nextLine();
+        String lastNamePattern = "^[A-Z]{1}[a-z,A-Z]{2,}";
+        Pattern pattern= Pattern.compile(lastNamePattern);
+        if (last_name .matches(lastNamePattern)) {
+            System.out.println("'" + last_name  + "'" + " validation success !");
         } else {
-            System.out.println("'" + name + "'" + " validation unsuccessful ! ");
-            return false;
+            System.out.println("'" + last_name  + "'" + " validation unsuccessful ! ");
         }
     }
-
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Project ");
-<<<<<<< HEAD
-        System.out.println("Enter First name ");
-        String first_name = scan.nextLine();
-        System.out.println(validateFirstName(first_name));
-        System.out.println("Enter Last name ");
-        String last_name=scan.nextLine();
-        System.out.println(validateLastName(last_name));
-=======
         validateFirstName();
+        validateLastName();
 
->>>>>>> UC1_Enter_valid_first_name
     }
 }
