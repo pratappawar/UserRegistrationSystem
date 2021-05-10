@@ -58,10 +58,10 @@ public class UserRegistrationValidation {
 
     public static void validatePassword() {
         System.out.println("Enter password: ");
-        String password = scan.nextLine();                  //Accept input
-        String passwordPattern = "^(?=..*[0-9])(?=.*[A-Z])(?=.*[a-z]).{8,}$";    //set Pattern
+        String password = scan.nextLine();              //Accept input
+        String passwordPattern = "^(?=.*[0-9])(?=.*[@#$%^&!])(?=.*[A-Z])(?=.*[a-z]).{8,}$"; //set Pattern
         Pattern pattern = Pattern.compile(passwordPattern);
-        if (password.matches(passwordPattern)) {                       //Check Input And Pattern
+        if (password.matches(passwordPattern)) {       //Check Input And Pattern
             System.out.println("'" + password + "'" + " validation success !");
         } else {
             System.out.println("'" + password + "'" + " validation unsuccessful !");
