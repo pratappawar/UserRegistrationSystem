@@ -56,12 +56,24 @@ public class UserRegistrationValidation {
         }
     }
 
+    public static void validatePassword(){
+        String password=scan.nextLine();                  //Accept input
+        String passwordPattern= "^(?=.*[a-z]).{8,}$";    //set Pattern
+        Pattern pattern= Pattern.compile(passwordPattern);
+        if(password.matches(passwordPattern)){                           //Check Input And Pattern
+            System.out.println("'" + password + "'" + " validation success !");
+        } else{
+            System.out.println("'" + password + "'" + " validation unsuccessful !");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Project ");
         validateFirstName();
         validateLastName();
         validateEmail();
         validatePhoneNumber();
+        validatePassword();
 
     }
 }
