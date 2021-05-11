@@ -1,79 +1,81 @@
 package com.userRegistrationSystem;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationValidation {
 
     static Scanner scan = new Scanner(System.in);
 
-    public static void validateFirstName() {
-        System.out.println("Enter First name ");
-        String first_name = scan.nextLine();
-        String firstNamePattern = "^[A-Z]{1}[a-z,A-Z]{2,}";
+    public static boolean validateFirstName(String first_name) {
+        String firstNamePattern = "^([A-Z]{1})+[a-zA-Z]{2,}$"; //set Pattern
         Pattern pattern = Pattern.compile(firstNamePattern);
-
-        if ((first_name.matches(firstNamePattern))) {
-            System.out.println("'" + first_name + "'" + " validation success !");
+        Matcher matcher = pattern.matcher(first_name);
+        if (matcher.matches()) {
+            return true;
         } else {
-            System.out.println("'" + first_name + "'" + " validation unsuccessful ! ");
+            return false;
         }
     }
 
-    public static void validateLastName() {
-        System.out.println("Enter last name ");
-        String last_name = scan.nextLine();
-        String lastNamePattern = "^[A-Z]{1}[a-z,A-Z]{2,}";
-        Pattern pattern = Pattern.compile(lastNamePattern);
-        if (last_name.matches(lastNamePattern)) {
-            System.out.println("'" + last_name + "'" + " validation success !");
+    public static boolean validateLastName(String last_name) {
+        String firstNamePattern = "^([A-Z]{1})+[a-zA-Z]{2,}$"; //set Pattern
+        Pattern pattern = Pattern.compile(firstNamePattern);
+        Matcher matcher = pattern.matcher(last_name);
+        if (matcher.matches()) {
+            System.out.println("'" + last_name + "'" + " validation successful ! ");
+            return true;
         } else {
             System.out.println("'" + last_name + "'" + " validation unsuccessful ! ");
+            return false;
         }
     }
 
-    public static void validateEmail() {
-        System.out.println("Enter email ");
-        String email = scan.nextLine();         //Accept Email id
+    public static boolean validateEmail(String email) {
         String emailPattern = "^[a-zA-Z0-9]+[.(a-zA-Z0-9)]*[@]{1}[a-z]+[.]{1}[a-z]{2,4}[.]*[a-z]*{2}$";  //set pattern for email id
         Pattern pattern = Pattern.compile(emailPattern);
-        if (email.matches(emailPattern)) {                                                               //check Input and Pattern
-            System.out.println("'" + email + "'" + " validation success !");
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
+            return true;
         } else {
-            System.out.println("'" + email + "'" + " validation unsuccessful !");
+            return false;
         }
     }
 
-    public static void validatePhoneNumber() {
-        System.out.println("Enter Enter mobile number: ");
-        String phoneNumber = scan.nextLine();                 //Accept Number
+    public static boolean validatePhoneNumber(String phone_number) {
         String phoneNumberPattern = "^[0-9]{2}[ ]+[0-9]{10}";    //set pattern
         Pattern pattern = Pattern.compile(phoneNumberPattern);
-        if (phoneNumber.matches(phoneNumberPattern)) {                //Check input and Pattern
-            System.out.println("'" + phoneNumber + "'" + " validation success !");
+        Matcher matcher = pattern.matcher(phone_number);
+        if (matcher.matches()) {
+            return true;
         } else {
-            System.out.println("'" + phoneNumber + "'" + " validation unsuccessful !");
+            return false;
         }
     }
 
-    public static void validatePassword() {
-        System.out.println("Enter password: ");
-        String password = scan.nextLine();              //Accept input
+    public static boolean validatePassword(String password) {
         String passwordPattern = "^(?=.*[0-9])(?=.*[@#$%^&!])(?=.*[A-Z])(?=.*[a-z]).{8,}$"; //set Pattern
         Pattern pattern = Pattern.compile(passwordPattern);
-        if (password.matches(passwordPattern)) {       //Check Input And Pattern
-            System.out.println("'" + password + "'" + " validation success !");
+        Matcher matcher = pattern.matcher(password);
+        if (matcher.matches()) {
+            return true;
         } else {
-            System.out.println("'" + password + "'" + " validation unsuccessful !");
+            return false;
         }
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Project ");
-        validateFirstName();
-        validateLastName();
-        validateEmail();
-        validatePhoneNumber();
-        validatePassword();
+        System.out.println("Enter First name ");
+        validateFirstName(scan.nextLine());
+        System.out.println("Enter last name ");
+        validateLastName(scan.nextLine());
+        System.out.println("Enter email name ");
+        validateEmail(scan.nextLine());
+        System.out.println(" Enter mobile number: ");
+        validatePhoneNumber(scan.nextLine());
+        System.out.println("Enter password: ");
+        validatePassword(scan.nextLine());
     }
 }
