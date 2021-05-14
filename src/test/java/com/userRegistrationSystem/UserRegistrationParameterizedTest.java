@@ -52,7 +52,7 @@ public class UserRegistrationParameterizedTest {
      * Test case actually runs from here
      */
     @Test
-    public void testUserRegistrationTest() {
+    public void testUserRegistrationTest() throws UserRegistrationException {
         System.out.println("This is Expected Result " + this.expectedResult);
         Assertions.assertEquals(expectedResult, userRegistration.validateEmail(testEmail));
     }
