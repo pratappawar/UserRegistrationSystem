@@ -32,7 +32,7 @@ public class UserRegistrationTest {
         Assertions.assertEquals(false, last_name);
     }
 
-    //--------------------------Test Cases for Email Validation---------------------//
+   //--------------------------Test Cases for Email Validation---------------------//
     @Test
     public void validateEmailAddress_WhenValidDomainName2_ShouldReturnTrue() {
         UserRegistrationValidation userValidation = new UserRegistrationValidation();
@@ -65,9 +65,9 @@ public class UserRegistrationTest {
     //--------------------------Test Cases for Password Validation-----------------//
     @Test
     public void validatePassword_WhenValid_ShouldReturnTrue() {
-       UserRegistrationValidation userValidation=new UserRegistrationValidation();
-       boolean password=userValidation.validatePassword("SwS@sff223");
-       Assertions.assertEquals(true,password);
+        UserRegistrationValidation userValidation=new UserRegistrationValidation();
+        boolean password=userValidation.validatePassword("SwS@sff223");
+        Assertions.assertEquals(true,password);
     }
 
     @Test
@@ -84,5 +84,3 @@ public class UserRegistrationTest {
         Assertions.assertEquals(false,password);
     }
 }
-
-

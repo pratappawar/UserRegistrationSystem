@@ -32,10 +32,10 @@ public class UserRegistrationValidation {
         }
     }
 
-    public static boolean validateEmail(String email) {
-        String emailPattern = "^[a-zA-Z0-9]+[.(a-zA-Z0-9)]*[@]{1}[a-z]+[.]{1}[a-z]{2,4}[.]*[a-z]*{2}$";  //set pattern for email id
+    public static boolean validateEmail(String testEmail){
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z0-9]{2,6}$";
         Pattern pattern = Pattern.compile(emailPattern);
-        Matcher matcher = pattern.matcher(email);
+        Matcher matcher = pattern.matcher(testEmail);
         if (matcher.matches()) {
             return true;
         } else {
@@ -43,7 +43,7 @@ public class UserRegistrationValidation {
         }
     }
 
-    public static boolean validatePhoneNumber(String phone_number) {
+        public static boolean validatePhoneNumber(String phone_number) {
         String phoneNumberPattern = "^[0-9]{2}[ ]+[0-9]{10}";    //set pattern
         Pattern pattern = Pattern.compile(phoneNumberPattern);
         Matcher matcher = pattern.matcher(phone_number);

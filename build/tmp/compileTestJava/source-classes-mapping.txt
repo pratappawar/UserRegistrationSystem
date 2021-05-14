@@ -1,2 +1,4 @@
 com/userRegistrationSystem/UserRegistrationTest.java
  com.userRegistrationSystem.UserRegistrationTest
+com/userRegistrationSystem/UserRegistrationParameterizedTest.java
+ com.userRegistrationSystem.UserRegistrationParameterizedTest
