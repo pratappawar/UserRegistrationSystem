@@ -1,12 +1,18 @@
 package com.userRegistrationSystem;
-
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/**
+ * Declared Interface
+ */
+@FunctionalInterface
+interface IValidate_UserDetail{
+    boolean userValidation(String userDetails,String pattern);
+}
 
 public class UserRegistrationValidation {
     /**
-     * declare All pattern as a constant which does not chage in whole program
+     * declare All pattern as a constant which does not change in whole program
      */
     private static final String NAME_PATTERN = "^([A-Z]{1})+[a-zA-Z]{2,}$";
     private static final String EMAIL_PATTERN = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z0-9]{2,6}$";
@@ -14,97 +20,22 @@ public class UserRegistrationValidation {
     private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[@#$%^&!])(?=.*[A-Z])(?=.*[a-z]).{8,}$";
     static Scanner scan = new Scanner(System.in);
 
-    /**
-     * Validate first name with pattern NAME_PATTERN
-     * @param first_name
-     * @return
-     */
-    public static boolean validateFirstName(String first_name) throws UserRegistrationException {
-        Pattern pattern = Pattern.compile(NAME_PATTERN);
-        Matcher matcher = pattern.matcher(first_name);
-        if (matcher.matches()) {
-            return true;
-        } else {
-            throw new UserRegistrationException("Enter valid name");
-        }
-
-    }
-
-    /**
-     * Validate last name with pattern NAME_PATTERN
-     * @param last_name
-     * @return
-     */
-    public static boolean validateLastName(String last_name) throws UserRegistrationException {
-        Pattern pattern = Pattern.compile(NAME_PATTERN);
-        Matcher matcher = pattern.matcher(last_name);
-        if (matcher.matches()) {
-            return true;
-        } else {
-            throw new UserRegistrationException("Enter valid name");
-        }
-    }
-
-    /**
-     * Validate Email with pattern Email pattern
-     * @param testEmail
-     * @return
-     */
-    public static boolean validateEmail(String testEmail) throws UserRegistrationException {
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(testEmail);
-        if (matcher.matches()) {
-            return true;
-        } else {
-            throw new UserRegistrationException("Enter valid name");
-        }
-    }
-
-    /**
-     * Validate Phone number with pattern PHONE_NO_PATTERN
-     * @param phone_number
-     * @return
-     */
-    public static boolean validatePhoneNumber(String phone_number) throws UserRegistrationException {
-        Pattern pattern = Pattern.compile(PHONE_NO_PATTERN);
-        Matcher matcher = pattern.matcher(phone_number);
-        if (matcher.matches()) {
-            return true;
-        } else {
-            throw new UserRegistrationException("Enter valid name");
-        }
-    }
-
-    /**
-     * Validate Password with pattern Password pattern
-     * @param password
-     * @return
-     */
-    public static boolean validatePassword(String password) throws UserRegistrationException {
-        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
-        Matcher matcher = pattern.matcher(password);
-        if (matcher.matches()) {
-            return true;
-        } else {
-            throw new UserRegistrationException("Enter valid name");
-        }
-    }
-
-    /**
-     * main method to call different method
-     * @param args
-     */
     public static void main(String[] args)throws UserRegistrationException {
-        System.out.println("Welcome to User Registration Project ");
-        System.out.println("Enter First name ");
-        validateFirstName(scan.nextLine());
-        System.out.println("Enter last name ");
-        validateLastName(scan.nextLine());
-        System.out.println("Enter email name ");
-        validateEmail(scan.nextLine());
-        System.out.println(" Enter mobile number: ");
-        validatePhoneNumber(scan.nextLine());
-        System.out.println("Enter password: ");
-        validatePassword(scan.nextLine());
+        IValidate_UserDetail validateUser=(userDetails,pattern)->Pattern.matches(userDetails,pattern);
+        try {
+            System.out.println("Welcome to User Registration Project ");
+            System.out.println("Enter First name ");
+            System.out.println("Valid first name:"+validateUser.userValidation(scan.nextLine(),NAME_PATTERN ));
+            System.out.println("Enter last name ");
+            System.out.println("Validate last Name: "+validateUser.userValidation(scan.nextLine(),NAME_PATTERN ));
+            System.out.println("Enter email name ");
+            System.out.println("validate Email: "+validateUser.userValidation(scan.nextLine(),EMAIL_PATTERN));
+            System.out.println(" Enter mobile number: ");
+            System.out.println("Validate phone Number: "+validateUser.userValidation(scan.nextLine(),PHONE_NO_PATTERN));
+            System.out.println("Enter password: ");
+            System.out.println("Validate Password: "+validateUser.userValidation(scan.nextLine(),PASSWORD_PATTERN));
+        } catch (Exception e) {
+            throw new UserRegistrationException("Please Enter Valid Detail");
+        }
     }
 }
